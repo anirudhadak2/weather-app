@@ -1,0 +1,111 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  width: 400px;
+}
+:root {
+  --spacing-regular: 8px;
+  --spacing-medium: 16px;
+
+  --font-small: 0.5rem;
+  --font-medium: 1rem;
+  --font-large: 2rem;
+  --font-xl: 4rem;
+
+  --font-semibold: 600;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "current current"
+    "hourly hourly"
+    "line line"
+    "fivedays fivedays"
+    "feelslike humidity";
+  gap: var(--spacing-regular);
+}
+.container,
+.container > section {
+  border: 2px solid yellowgreen;
+  padding: var(--spacing-medium);
+}
+
+/* stlying for curent forcast */
+#current-forecast {
+  grid-area: current;
+  text-align: center;
+}
+
+#current-forecast .now-temp {
+  font-size: var(--font-xl);
+}
+#current-forecast .temp-desc {
+  text-transform: capitalize;
+}
+#current-forecast .temp-desc,
+#current-forecast .now-date,
+#current-forecast .min-max-temp {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-medium);
+  margin: var(--spacing-regular);
+}
+
+/* style for hourly forcast */
+#hourly-forecast {
+  grid-area: hourly;
+  text-align: center;
+}
+#hourly-forecast .hourly-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(100px, 1fr);
+  overflow-x: auto;
+  gap: var(--spacing-regular);
+}
+
+#hourly-forecast .hourly-container .time {
+}
+
+#hourly-forecast .hourly-container .icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+#hourly-forecast .hourly-container .temp {
+  font-size: var(--font-medium);
+  font-weight: var(--font-semibold);
+}
+
+.sep-line {
+  grid-area: line;
+}
+
+#five-days-forecast {
+  grid-area: fivedays;
+}
+#feels-like {
+  grid-area: feelslike;
+  text-align: center;
+}
+.feels-like-temp,
+.humidity-percent {
+  font-weight: var(--font-semibold);
+  font-size: var(--font-medium);
+  margin: var(--spacing-regular);
+}
+#humidity {
+  grid-area: humidity;
+  text-align: center;
+}

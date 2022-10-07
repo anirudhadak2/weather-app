@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section id="current-forecast">
+        <h1 class="city-name">Hyd</h1>
+        <p class="now-temp">24</p>
+        <p class="temp-desc">Couldy</p>
+        <p class="now-date">Oct 5 wed</p>
+        <p class="min-max-temp">18 28</p>
+      </section>
+      <section id="hourly-forecast">
+        <h1>Hourly Forecast</h1>
+        <section class="hourly-container"></section>
+      </section>
+      <hr class="sep-line" />
+
+      <section id="five-days-forecast">
+        <h1>Five Days Forecast</h1>
+        <section class="five-day-container">
+          <article class="day-wise-forecast">
+            <h3>today</h3>
+            <p>icon</p>
+            <p>low</p>
+            <p>high</p>
+          </article>
+          <article class="day-wise-forecast">
+            <h3>thursday</h3>
+            <p>icon</p>
+            <p>low</p>
+            <p>high</p>
+          </article>
+        </section>
+      </section>
+
+      <section id="feels-like">
+        <h1>Feels like</h1>
+        <p class="feels-like-temp">24</p>
+      </section>
+
+      <section id="humidity">
+        <h1>humidity</h1>
+        <p class="humidity-percent">94%</p>
+      </section>
+    </main>
+    <script src="./src/index.js" type="module"></script>
+    <script src="./src/hourlyweather.js" type="module"></script>
+  </body>
+</html>
