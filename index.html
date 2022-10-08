@@ -9,6 +9,8 @@
   </head>
   <body>
     <main class="container">
+      <input type="search" name="search" id="search" list="cities" />
+      <datalist id="cities"> </datalist>
       <section id="current-forecast">
         <h1 class="city-name">Hyd</h1>
         <p class="now-temp">24</p>
@@ -24,20 +26,7 @@
 
       <section id="five-days-forecast">
         <h1>Five Days Forecast</h1>
-        <section class="five-day-container">
-          <article class="day-wise-forecast">
-            <h3>today</h3>
-            <p>icon</p>
-            <p>low</p>
-            <p>high</p>
-          </article>
-          <article class="day-wise-forecast">
-            <h3>thursday</h3>
-            <p>icon</p>
-            <p>low</p>
-            <p>high</p>
-          </article>
-        </section>
+        <section class="five-day-container"></section>
       </section>
 
       <section id="feels-like">
@@ -50,7 +39,9 @@
         <p class="humidity-percent">94%</p>
       </section>
     </main>
-    <script src="./src/index.js" type="module"></script>
-    <script src="./src/hourlyweather.js" type="module"></script>
+    <script defer src="./src/app-data.js" type="module"></script>
+    <script defer src="./src/index.js" type="module"></script>
+    <script defer src="./src/hourlyweather.js" type="module"></script>
+    <script defer src="./src/fiveday.js" type="module"></script>
   </body>
 </html>

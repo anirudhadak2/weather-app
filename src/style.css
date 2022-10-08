@@ -23,6 +23,11 @@ body {
   --font-semibold: 600;
 }
 
+/* style the headings */
+h1 {
+  margin-bottom: var(--spacing-medium);
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -92,9 +97,35 @@ body {
   grid-area: line;
 }
 
+/* sytle for 5 days forecast */
+
 #five-days-forecast {
   grid-area: fivedays;
+  text-align: center;
 }
+#five-days-forecast .five-day-container {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.five-day-container .day-wise-forecast {
+  display: grid;
+  grid-template: auto / repeat(4, 1fr);
+  gap: var(--spacing-medium);
+  margin-bottom: var(--spacing-regular);
+}
+
+.five-day-container .day-wise-forecast .min-temp,
+.five-day-container .day-wise-forecast .max-temp {
+  font-size: var(--font-medium);
+  font-weight: var(--font-semibold);
+}
+.five-day-container .day-wise-forecast .icon {
+  width: 75px;
+  height: 75px;
+}
+/* style for feels like */
+
 #feels-like {
   grid-area: feelslike;
   text-align: center;
