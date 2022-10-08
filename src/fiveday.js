@@ -1,9 +1,9 @@
-import { dayWiseData, DAY_OF_THE_WEEK } from "./app-data.js";
 import { getIcon } from "./hourlyweather.js";
 import { formatTemperature } from "./index.js";
-const load5DayForecast = (dayWiseData) => {
+export const load5DayForecast = (dayWiseData) => {
   const fiveDayContainer = document.querySelector(".five-day-container");
   let innerHTMLString = "";
+
   Array.from(dayWiseData).map(([day, { icon, minTemp, maxTemp }], index) => {
     if (index < 5) {
       innerHTMLString += `<article class="day-wise-forecast">
@@ -17,7 +17,3 @@ const load5DayForecast = (dayWiseData) => {
 
   fiveDayContainer.innerHTML = innerHTMLString;
 };
-
-document.addEventListener("DOMContentLoaded", async function () {
-  setTimeout(load5DayForecast, 500, dayWiseData);
-});

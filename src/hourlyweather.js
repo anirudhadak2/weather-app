@@ -1,12 +1,13 @@
 import {
-  HOURLY_FORCASTE_URL,
   dayWiseData,
   DAY_OF_THE_WEEK,
+  getHourlyForecastURL,
 } from "./app-data.js";
 import { formatTemperature } from "./index.js";
+import { load5DayForecast } from "./fiveday.js";
 
 const getHourlyForecast = async () => {
-  const response = await fetch(HOURLY_FORCASTE_URL);
+  const response = await fetch(getHourlyForecastURL());
 
   const data = await response.json();
   return data.list.map((forecast) => {
@@ -68,12 +69,13 @@ const getDayWiseForecast = (hourlyForecastData) => {
       icon: data.find((d) => d.icon).icon,
     });
   }
+  load5DayForecast(dayWiseData);
 };
 
-document.addEventListener("DOMContentLoaded", async function () {
+export const loadHourlyData = async () => {
   const hourlyForecastData = await getHourlyForecast();
 
   loadHourlyForcast(hourlyForecastData);
 
   getDayWiseForecast(hourlyForecastData);
-});
+};

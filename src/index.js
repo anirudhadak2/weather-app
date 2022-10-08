@@ -1,7 +1,23 @@
-import { CURRENT_FORECAST_URL } from "./app-data.js";
+import {
+  getCurrentForcastURL,
+  setCurrentForcastURL,
+  setHourlyForecastURL,
+  dayWiseData,
+} from "./app-data.js";
+
+import { loadHourlyData } from "./hourlyweather.js";
+
+const loadForecastUsingGeoLocation = () => {
+  navigator.geolocation.getCurrentPosition(({ coords }) => {
+    let { latitude: lat, longitude: lon } = coords;
+    let location = { lat, lon, name: null };
+    setCurrentForcastURL(location);
+    setHourlyForecastURL(location);
+  });
+};
 
 let getCurrentWeatherData = async () => {
-  const response = await fetch(CURRENT_FORECAST_URL);
+  const response = await fetch(getCurrentForcastURL());
   return response.json();
 };
 
@@ -43,9 +59,15 @@ const loadHumidity = ({ main: { humidity } }) => {
   document.querySelector(".humidity-percent").textContent = `${humidity}%`;
 };
 
-document.addEventListener("DOMContentLoaded", async function () {
+export const loadCurrentWeatherData = async () => {
   const weatherData = await getCurrentWeatherData();
   loadCurrentForcast(weatherData);
   loadFeelsLike(weatherData);
   loadHumidity(weatherData);
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadForecastUsingGeoLocation();
+  setTimeout(loadCurrentWeatherData, 500);
+  setTimeout(loadHourlyData, 500);
 });

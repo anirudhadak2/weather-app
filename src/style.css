@@ -32,6 +32,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
+    "search search"
     "current current"
     "hourly hourly"
     "line line"
@@ -43,6 +44,12 @@ h1 {
 .container > section {
   border: 2px solid yellowgreen;
   padding: var(--spacing-medium);
+}
+
+#search {
+  grid-area: search;
+  border-radius: var(--spacing-regular);
+  font-size: var(--font-large);
 }
 
 /* stlying for curent forcast */
@@ -69,6 +76,8 @@ h1 {
 #hourly-forecast {
   grid-area: hourly;
   text-align: center;
+  -moz-overflow-x: auto;
+  overflow-x: auto;
 }
 #hourly-forecast .hourly-container {
   display: grid;
@@ -76,10 +85,8 @@ h1 {
   grid-auto-flow: column;
   grid-auto-columns: minmax(100px, 1fr);
   overflow-x: auto;
-  gap: var(--spacing-regular);
-}
 
-#hourly-forecast .hourly-container .time {
+  gap: var(--spacing-regular);
 }
 
 #hourly-forecast .hourly-container .icon {

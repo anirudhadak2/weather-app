@@ -9,7 +9,14 @@
   </head>
   <body>
     <main class="container">
-      <input type="search" name="search" id="search" list="cities" />
+      <input
+        type="search"
+        name="search"
+        id="search"
+        list="cities"
+        placeholder="search city"
+        autocomplete="off"
+      />
       <datalist id="cities"> </datalist>
       <section id="current-forecast">
         <h1 class="city-name">Hyd</h1>
@@ -43,5 +50,6 @@
     <script defer src="./src/index.js" type="module"></script>
     <script defer src="./src/hourlyweather.js" type="module"></script>
     <script defer src="./src/fiveday.js" type="module"></script>
+    <script defer src="./src/search.js" type="module"></script>
   </body>
 </html>
