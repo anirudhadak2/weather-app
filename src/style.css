@@ -8,8 +8,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  margin: auto;
-  width: 400px;
+  margin: var(--spacing-regular) auto;
+  max-width: 800px;
 }
 :root {
   --spacing-regular: 8px;
@@ -146,4 +146,17 @@ h1 {
 #humidity {
   grid-area: humidity;
   text-align: center;
+}
+
+@media (width>=650) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "search search search search"
+      "current current current current"
+      "line line"
+      "hourly hourly fivedays fivedays"
+      "feelslike humidity fivedays fivedays";
+  }
 }
