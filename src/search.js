@@ -13,7 +13,7 @@ let selectedCity, selectedCityText;
 
 const getCitiesUsingGeoLocation = async (city) => {
   let response = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
   );
   return response.json();
 };
