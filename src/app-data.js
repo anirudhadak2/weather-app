@@ -21,6 +21,11 @@ export function getHourlyForecastURL() {
 }
 
 export let dayWiseData = new Map();
+
+export function resetDayWiseData() {
+  dayWiseData.clear();
+}
+
 export const DAY_OF_THE_WEEK = [
   "Sun",
   "Mon",

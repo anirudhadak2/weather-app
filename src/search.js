@@ -4,6 +4,7 @@ import {
   API_KEY,
   setCurrentForcastURL,
   setHourlyForecastURL,
+  resetDayWiseData,
 } from "./app-data.js";
 import { loadCurrentWeatherData } from "./index.js";
 import { loadHourlyData } from "./hourlyweather.js";
@@ -58,7 +59,8 @@ const onCitySelection = (event) => {
       (option) => option.value === selectedCityText
     );
     selectedCity = JSON.parse(selectedOption.getAttribute("city-details"));
-    console.log(selectedCity);
+
+    resetDayWiseData();
     setCurrentForcastURL(selectedCity);
     setHourlyForecastURL(selectedCity);
     loadCurrentWeatherData();

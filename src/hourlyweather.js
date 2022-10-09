@@ -50,6 +50,7 @@ const getDayWiseForecast = (hourlyForecastData) => {
 
     if (dayWiseData.has(dayOfTheWeek)) {
       let forcastForTheDay = dayWiseData.get(dayOfTheWeek);
+
       forcastForTheDay.push(forecast);
 
       dayWiseData.set(dayOfTheWeek, forcastForTheDay);

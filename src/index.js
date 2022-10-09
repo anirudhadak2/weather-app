@@ -68,6 +68,12 @@ export const loadCurrentWeatherData = async () => {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadForecastUsingGeoLocation();
+  window.onload = function () {
+    if (!window.location.hash) {
+      window.location = window.location + "#loaded";
+      window.location.reload();
+    }
+  };
   setTimeout(loadCurrentWeatherData, 500);
   setTimeout(loadHourlyData, 500);
 });
