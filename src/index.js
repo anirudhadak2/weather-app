@@ -13,6 +13,10 @@ const loadForecastUsingGeoLocation = () => {
     let location = { lat, lon, name: null };
     setCurrentForcastURL(location);
     setHourlyForecastURL(location);
+
+    setTimeout(loadCurrentWeatherData, 500);
+    setTimeout(loadHourlyData, 500);
+    setTimeout(reloadBrowser, 500);
   });
 };
 
@@ -66,14 +70,29 @@ export const loadCurrentWeatherData = async () => {
   loadHumidity(weatherData);
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  loadForecastUsingGeoLocation();
+function handlePermission() {
+  navigator.permissions.query({ name: "geolocation" }).then((result) => {
+    if (result.state === "granted") {
+      console.log(`permission: ${result.state}`);
+      loadForecastUsingGeoLocation();
+    } else if (result.state === "prompt") {
+      console.log(`permission: ${result.state}`);
+      loadForecastUsingGeoLocation();
+    } else if (result.state === "denied") {
+      console.log(`permission: ${result.state}`);
+    }
+  });
+}
+
+function reloadBrowser() {
   window.onload = function () {
     if (!window.location.hash) {
       window.location = window.location + "#loaded";
       window.location.reload();
     }
   };
-  setTimeout(loadCurrentWeatherData, 500);
-  setTimeout(loadHourlyData, 500);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  handlePermission();
 });
