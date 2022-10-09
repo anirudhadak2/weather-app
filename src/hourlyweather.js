@@ -37,7 +37,7 @@ const loadHourlyForcast = (hourlyForecastData) => {
     innerHTMLString += ` <article>
     <h3 class="time">${timeFormatter.format(new Date(dt_txt))}</h3>
     <img class="icon" src="${getIcon(icon)}">
-    <p class="temp">${formatTemperature(temp)} C</p>
+    <p class="temp">${formatTemperature(temp)}</p>
   </article>`;
   }
   hourlyContainer.innerHTML = innerHTMLString;

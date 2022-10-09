@@ -8,7 +8,6 @@ import {
 } from "./app-data.js";
 import { loadCurrentWeatherData } from "./index.js";
 import { loadHourlyData } from "./hourlyweather.js";
-import { load5DayForecast } from "./fiveday.js";
 
 let selectedCity, selectedCityText;
 

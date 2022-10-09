@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap");
+
 *,
 *::after,
 *::before {
@@ -5,15 +8,10 @@
   margin: 0;
   padding: 0;
 }
-
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: var(--spacing-medium) auto;
-  max-width: 800px;
-}
 :root {
   --spacing-regular: 8px;
   --spacing-medium: 16px;
+  --spacing-small: 4px;
 
   --font-small: 0.5rem;
   --font-medium: 1rem;
@@ -21,6 +19,35 @@ body {
   --font-xl: 4rem;
 
   --font-semibold: 600;
+  --font-family-1: "Kalam", cursive;
+  --font-family-2: "Merienda", cursive;
+}
+body {
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: var(--font-family-2);
+  margin: var(--spacing-medium) auto;
+  max-width: 800px;
+  background: linear-gradient(#e66465, #9198e5);
+}
+
+/* style for scrollbar  */
+.hourly-container::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: var(--spacing-medium);
+  height: var(--spacing-small);
+}
+.hourly-container::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.hourly-container::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+
+header h1 {
+  text-align: center;
 }
 
 /* style the headings */
@@ -50,19 +77,39 @@ h1 {
   grid-area: search;
   border-radius: var(--spacing-regular);
   font-size: var(--font-large);
+  padding: var(--spacing-regular);
+  font-family: var(--font-family-2);
+}
+
+#search::placeholder {
+  padding-left: var(--spacing-regular);
 }
 
 /* stlying for curent forcast */
 #current-forecast {
   grid-area: current;
+  /* text-align: center; */
+  display: grid;
+  grid-template-areas:
+    "city city"
+    "temp desc"
+    "temp date"
+    "temp low-high";
+  justify-content: space-evenly;
+}
+
+#current-forecast .city-name {
+  grid-area: city;
   text-align: center;
 }
 
 #current-forecast .now-temp {
   font-size: var(--font-xl);
+  grid-area: temp;
 }
 #current-forecast .temp-desc {
   text-transform: capitalize;
+  grid-area: desc;
 }
 #current-forecast .temp-desc,
 #current-forecast .now-date,
@@ -78,6 +125,7 @@ h1 {
   text-align: center;
   -moz-overflow-x: auto;
   overflow-x: auto;
+  display: grid;
 }
 #hourly-forecast .hourly-container {
   display: grid;
@@ -120,6 +168,7 @@ h1 {
   grid-template: auto / repeat(4, 1fr);
   gap: var(--spacing-medium);
   margin-bottom: var(--spacing-regular);
+  align-items: center;
 }
 
 .five-day-container .day-wise-forecast .min-temp,
@@ -136,6 +185,8 @@ h1 {
 #feels-like {
   grid-area: feelslike;
   text-align: center;
+  display: grid;
+  align-content: center;
 }
 .feels-like-temp,
 .humidity-percent {
@@ -146,6 +197,8 @@ h1 {
 #humidity {
   grid-area: humidity;
   text-align: center;
+  display: grid;
+  align-content: center;
 }
 
 @media (width>=650px) {
